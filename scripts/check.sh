@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Everything the demo's check runs, in order; stops at the first failure: format, lint, type check,
-# the fake backend's tests, the build, and the Playwright smoke suite in Chromium, Firefox and WebKit
-# against the fake backend (it starts both servers, on 8080 and 4173, which must be free). The SDK
-# checkout next to this repository must be built first (README, Requirements).
+# the fake backend's tests, the build, and the Playwright suite (the smoke and the scenario specs) in
+# Chromium, Firefox and WebKit against the fake backend (it starts both servers, on 8080 and 4173,
+# which must be free, and a backend per worker). The SDK checkout next to this repository must be
+# built first (README, Requirements).
 #
 #   scripts/check.sh
 set -euo pipefail

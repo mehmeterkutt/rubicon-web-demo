@@ -5,8 +5,8 @@ hand and with Playwright, against a fake backend. It holds only the app, the fak
 tests; the SDK and its design live in the SDK repository and in Confluence. It is a test harness:
 every page, tab and button triggers one SDK behaviour and says what to expect.
 
-The fake backend arrived with step 9.1 of the SDK's implementation plan, the app with step 9.2; the
-manual checklist and the scenario suite arrive with step 9.3.
+The fake backend arrived with step 9.1 of the SDK's implementation plan, the app with step 9.2, the
+manual checklist (`docs/manual-checklist.md`) and the Playwright scenario suite with step 9.3.
 
 ## Requirements
 
@@ -144,5 +144,23 @@ The check runs Prettier, ESLint, the type check, the fake backend's tests, the b
 Playwright suite in Chromium, Firefox and WebKit. Playwright starts its own fake backend on 8080
 and builds and serves the app on 4173 (`vite preview`), so stop `pnpm server` and `pnpm preview`
 first: a server already on one of the ports fails the run rather than being reused with someone's
-`/control` settings. The suite of step 9.2 is a smoke test: every page and tab opens and at least
-one of its events reaches the fake backend (the CSP page shows `CSP_BLOCKED` instead).
+`/control` settings. The suite has two parts:
+
+- `e2e/smoke.spec.ts` (step 9.2): every page and tab opens and at least one of its events reaches
+  the fake backend on 8080 (the CSP page shows `CSP_BLOCKED` instead).
+- `e2e/scenarios/` (step 9.3): the scenarios of `docs/manual-checklist.md` that a browser can
+  automate, each test named after its row, driven through the demo's pages and buttons. Every
+  Playwright worker runs a fake backend of its own (`e2e/backend.ts`: `server.py` on a free port
+  with a temporary configuration directory), so a scenario may script the server's answers; the
+  snippet page uses the shared one on 8080, which its policy names. Long waits (session timeouts,
+  a 429, a 401's hour, the age of another page's events) run on Playwright's clock.
+
+```bash
+pnpm e2e e2e/scenarios                        # the scenario suite alone
+pnpm e2e --repeat-each 3                      # three times over, for stability
+```
+
+What Playwright cannot do (a real back/forward cache restore, real hiding, a background tab, a
+private window, a real `https` page, an ad blocker, a physical iPad, measurements on a slow device
+or a real network) is in the manual checklist, which says for every row whether the suite covers
+it.

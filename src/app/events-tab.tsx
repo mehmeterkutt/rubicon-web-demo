@@ -347,7 +347,7 @@ function Rejected({ demo }: { demo: Demo }) {
     {
       title: 'Objects the SDK never converts',
       expect:
-        'A class instance, Error, RegExp, Promise, function, Symbol, ArrayBuffer, DataView, Blob, an object with toJSON (never run) and a DOM node: each key dropped, its type named, never its value',
+        'A class instance, Error, RegExp, Promise, function, Symbol, ArrayBuffer, DataView, Blob and a DOM node: each key dropped, its type named, never its value. A plain object with its own toJSON is a plain object: the function is dropped (never run), to_json arrives as {}',
       run: () => {
         analytics.track('Bad Objects', {
           class_instance: new Product('A-1'),
@@ -388,7 +388,7 @@ function Rejected({ demo }: { demo: Demo }) {
     },
     {
       title: 'A Map with a number key',
-      expect: 'A Map is an object only with string keys: the map is dropped',
+      expect: 'A Map is an object of its string keys: the number key is dropped, the map arrives as {}',
       run: () => {
         analytics.track('Bad Map', { map: new Map<unknown, unknown>([[1, 'x']]), kept: 'stays' });
       },

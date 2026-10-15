@@ -111,7 +111,8 @@ const PAGES: Record<string, PageContent> = {
         />
         <Expect>
           In the frame: STORAGE_UNAVAILABLE (WARN) once, a deviceId for this frame only, events sent from origin null
-          (Server tab, Requests) without context.page.url. This page outside the frame is unaffected.
+          (Server tab, Requests), with the frame's own address as context.page.url (its URL has a real origin). This
+          page outside the frame is unaffected.
         </Expect>
       </SectionCard>
     ),

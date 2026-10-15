@@ -22,8 +22,9 @@ documents are in English, without emoji.
 | `snippet/init.js` | The snippet page's own init tag (ES5), inlined and hashed by the plugin |
 | `public/` | Files served as they are: the sandboxed frame's classic script, the icon |
 | `tooling/rubicon-pages.ts` | The Vite plugin: the SDK's script build under `/sdk/`, the snippet's tags and policy, the single-page fallback |
-| `e2e/` | Playwright: fixtures (hostnames, events by `deviceId`, settings), the WebKit proxy, the smoke spec |
+| `e2e/` | Playwright: fixtures (hostnames, events by `deviceId`, settings), the WebKit proxy, the smoke spec; `scenarios/` the scenario suite of step 9.3 (`scenario.ts` its helpers, `backend.ts` a fake backend per worker) |
 | `scripts/check.sh` | The demo's check; every step keeps it green and adds what it builds |
+| `docs/manual-checklist.md` | The scenarios to run by hand before a release, which of them Playwright also covers, the measurements that set the SDK's constants, and the last run |
 | `docs/decisions.md` | Implementation decisions of the demo, the counterpart of the SDK plan's section 15 |
 
 ## Commands
@@ -67,7 +68,10 @@ builds; Playwright stays at the SDK's version.
   `createTrackedFetch`; its app calls go to `localhost`, the SDK to `127.0.0.1`.
 - No `StrictMode`: it runs effects twice in development, which would double SDK calls.
 - Tests wait on conditions, never fixed sleeps; each test has its own server or browser context. A
-  Playwright spec finds its events on the shared fake backend by its context's `deviceId`.
+  smoke spec finds its events on the shared fake backend by its context's `deviceId`; a scenario
+  uses its worker's own backend (`e2e/scenario.ts`), long waits on Playwright's clock.
+- A scenario of `docs/manual-checklist.md` that a browser can automate has a test named after its
+  row, driven through the demo's buttons; a new behaviour gets a row, and a test when it can.
 
 ## Git and pull requests
 
