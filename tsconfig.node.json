@@ -1,0 +1,20 @@
+{
+  // Node code: the Vite configuration and its plugin, the Playwright configuration and the specs;
+  // `bundler` resolution, since Vite bundles its configuration and Playwright transpiles the specs.
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["es2023", "dom"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": false,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["vite.config.ts", "playwright.config.ts", "tooling", "e2e"]
+}

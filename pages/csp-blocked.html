@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- A policy that leaves the SDK's host out of connect-src (Web HTTP 6): CSP_BLOCKED. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSP blocks the host · Rubicon web demo</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body data-page="csp-blocked">
+    <div id="root"></div>
+    <script type="module" src="/src/pages/plain.tsx"></script>
+  </body>
+</html>
