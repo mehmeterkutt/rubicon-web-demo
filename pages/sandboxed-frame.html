@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sandboxed frame · Rubicon web demo</title>
+    <link rel="icon" href="/favicon.svg" />
+    <!-- The script build without integrity: this frame's origin is opaque (tooling/rubicon-pages.ts). -->
+    <!-- rubicon:script-plain -->
+  </head>
+  <body>
+    <p>deviceId in this frame: <code id="device"></code></p>
+    <button type="button" id="track">Track</button>
+    <pre id="out"></pre>
+    <script src="/sandboxed-frame.js"></script>
+  </body>
+</html>
