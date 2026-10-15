@@ -1,0 +1,9 @@
+pnpm-lock.yaml
+node_modules/
+dist/
+temp/
+test-results/
+playwright-report/
+fake-server/config/
+# Markdown is not formatted and wraps at 100 columns, as in the SDK repository.
+*.md

@@ -1,0 +1,4 @@
+# One package, the demo app; this file holds the pnpm settings shared with the SDK repository.
+
+# Supply-chain guard (the SDK's D6b): a version younger than seven days is never installed.
+minimumReleaseAge: 10080
