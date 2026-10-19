@@ -1,9 +1,8 @@
 # Rubicon web demo
 
 Browser host app for the Rubicon web SDK (`rubicon-team/rubicon-web-sdk`, checked out next to this
-repository's parent at `~/Projects/rubicon/rubicon-web-sdk`). The SDK's design decisions are in
-Confluence (space SD, "Analytics SDK: Web") and its plan is `docs/implementation-plan.md` there; this
-repository implements its phase 9.
+repository's parent at `~/Projects/rubicon/rubicon-web-sdk`). This repository is the SDK's host
+app and test harness.
 
 The conversation with the user is in Turkish with technical terms in English; code, comments and
 documents are in English, without emoji.

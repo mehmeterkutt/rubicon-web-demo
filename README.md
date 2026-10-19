@@ -2,7 +2,7 @@
 
 A browser host app used to exercise the Rubicon web analytics SDK (`rubicon-team/rubicon-web-sdk`) by
 hand and with Playwright, against a fake backend. It holds only the app, the fake backend and their
-tests; the SDK and its design live in the SDK repository and in Confluence. It is a test harness:
+tests; the SDK and its design live in the SDK repository. It is a test harness:
 every page, tab and button triggers one SDK behaviour and says what to expect.
 
 The fake backend arrived with step 9.1 of the SDK's implementation plan, the app with step 9.2, the
