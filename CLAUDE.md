@@ -1,6 +1,6 @@
 # Rubicon web demo
 
-Browser host app for the Rubicon web SDK (`rubicon-team/rubicon-web-sdk`, checked out next to this
+Browser host app for the Rubicon web SDK (`mehmeterkutt/rubicon-web-sdk`, checked out next to this
 repository's parent at `~/Projects/rubicon/rubicon-web-sdk`). This repository is the SDK's host
 app and test harness.
 
